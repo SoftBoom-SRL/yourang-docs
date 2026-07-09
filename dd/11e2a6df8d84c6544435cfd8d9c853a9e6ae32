@@ -1,0 +1,80 @@
+whatsapp/overview.md
+  s_04e2f81c96056f::t_533269136702a6 27
+README.md
+  s_04e2f81c96056f::t_533269136702a6 10-11,16,18
+dashboard-assistant/plans-and-limits.md
+  s_04e2f81c96056f::t_533269136702a6 1-50
+dashboard-assistant/what-it-is.md
+  s_04e2f81c96056f::t_533269136702a6 1-37
+voice-agent/voices-and-language.md
+  s_04e2f81c96056f::t_533269136702a6 38-41
+get-started/first-access.md
+  s_04e2f81c96056f::t_533269136702a6 18
+meta-agent/comments.md
+  s_04e2f81c96056f::t_533269136702a6 1-28
+call-center/contact-lists-and-live-sync.md
+  s_04e2f81c96056f::t_533269136702a6 1-52
+meta-agent/configure.md
+  s_04e2f81c96056f::t_533269136702a6 1-60
+integrations/meta.md
+  s_04e2f81c96056f::t_533269136702a6 1-32
+meta-agent/inbox.md
+  s_04e2f81c96056f::t_533269136702a6 1-36
+whatsapp/ai-agents.md
+  s_04e2f81c96056f::t_533269136702a6 1-26
+integrations/hubspot-setup.md
+  s_04e2f81c96056f::t_533269136702a6 1-36
+voice-agent/instructions.md
+  s_04e2f81c96056f::t_533269136702a6 40-78
+meta-agent/create-agent.md
+  s_04e2f81c96056f::t_533269136702a6 1-39
+meta-agent/connect.md
+  s_04e2f81c96056f::t_533269136702a6 1-51
+meta-agent/overview.md
+  s_04e2f81c96056f::t_533269136702a6 1-37
+activity-info/time.md
+  s_04e2f81c96056f::t_533269136702a6 1-24
+integrations/apple-calendar-setup.md
+  s_04e2f81c96056f::t_533269136702a6 1-35
+voice-agent/token-usage.md
+  s_04e2f81c96056f::t_533269136702a6 1-56
+activity-info/ai-working-hours.md
+  s_04e2f81c96056f::t_533269136702a6 1-14
+activity-info/departments.md
+  s_04e2f81c96056f::t_533269136702a6 1-23
+call-transfers/after-hours.md
+  s_04e2f81c96056f::t_533269136702a6 20,22
+dashboard-assistant/how-to-use-it.md
+  s_04e2f81c96056f::t_533269136702a6 1-50
+activity-info/place.md
+  s_04e2f81c96056f::t_533269136702a6 1-26
+dashboard-assistant/safety-and-privacy.md
+  s_04e2f81c96056f::t_533269136702a6 1-52
+voice-agent/advanced-settings.md
+  s_04e2f81c96056f::t_533269136702a6 1-77
+dashboard-assistant/capabilities.md
+  s_04e2f81c96056f::t_533269136702a6 1-67
+meta-agent/prepare-accounts.md
+  s_04e2f81c96056f::t_533269136702a6 1-90
+activity-info/details.md
+  s_04e2f81c96056f::t_533269136702a6 1-48
+llms.txt
+  s_04e2f81c96056f::t_533269136702a6 12-19,25-26,72-82,114-115,119,136,170-176
+  s_04e2f81c96056f::t_6c1cc22abd7258 177
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "dd11e2a6df8d84c6544435cfd8d9c853a9e6ae32",
+  "prompts": {},
+  "sessions": {
+    "s_04e2f81c96056f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3678e065-15bd-4a41-8d90-350ca8207ef2",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "ReddoakMatteoSchifano <matteo.schifano@reddoak.com>"
+    }
+  }
+}
