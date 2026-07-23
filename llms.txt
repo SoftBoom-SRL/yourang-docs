@@ -1,0 +1,186 @@
+# Everything you need to use the platform
+
+A guide designed for business owners who want to understand, step by step, how to hand off calls to a voice assistant.
+
+## Get started
+
+- [What the platform is](get-started/what-is-the-platform.md): Find out why Yourang exists and what problem it solves for your business.
+- [First access](get-started/first-access.md): How to create your account, set up your business, and activate the first call handled by Yourang.
+- [Platform overview](get-started/platform-overview.md): A quick orientation to the main areas of the Yourang control panel.
+- [Quick glossary](get-started/quick-glossary.md): The most-used terms across the platform, explained simply and directly.
+
+## Dashboard Assistant
+
+- [What the dashboard assistant is](dashboard-assistant/what-it-is.md): An always-on AI guide inside Yourang that understands your requests in plain language and helps you use the platform.
+- [How to use it](dashboard-assistant/how-to-use-it.md): How to open the assistant, what to ask, how to continue a conversation, and which languages it speaks.
+- [What it can do](dashboard-assistant/capabilities.md): The four categories of actions the assistant can perform: read, explain, change, and guide you through the dashboard. And what it deliberately does not do.
+- [Safety and privacy](dashboard-assistant/safety-and-privacy.md): How the assistant protects your data, why it always asks for confirmation before making changes, and how it behaves based on the role of who is using it.
+- [Plans and usage limits](dashboard-assistant/plans-and-limits.md): Which plans include the assistant, how the monthly consumption works, and what happens when you approach the limit.
+
+## Voice agent
+
+- [Basic configuration](voice-agent/basic-configuration.md): Set up the identity and scope of your voice agent
+- [Voices and language](voice-agent/voices-and-language.md): Choose the voice and language for the voice assistant
+- [Instructions](voice-agent/instructions.md): Write effective instructions for the voice agent
+- [Prompt tokens](voice-agent/token-usage.md): Understand and manage your assistant's prompt tokens
+- [Advanced settings](voice-agent/advanced-settings.md): Fine-tune creativity, speed, and turn detection
+- [Evaluation criteria](voice-agent/evaluation-criteria.md): Define how the agent evaluates customer requests
+- [Testing and playground](voice-agent/testing-and-playground.md): Test the voice agent before going live
+- [Updating instructions](voice-agent/updating-instructions.md): Keep the agent accurate and up to date
+- [External Tools](voice-agent/external-tools.md): Custom webhooks the AI agent can call during a conversation.
+- [Built-in tools](voice-agent/system-tools.md): Native agent capabilities: transfers, bookings, knowledge search, call end.
+- [MCP servers](voice-agent/mcp.md): Expose many remote tools through the standard Model Context Protocol.
+
+## Models offered
+
+- [What models are and why they matter](models/overview.md): The two ingredients that determine how the assistant behaves: the voice model and the AI model.
+- [Voice models](models/voice-models.md): Available voices, languages, styles, and how to test them before making your choice active.
+- [AI models](models/ai-models.md): The understanding and reasoning models that decide the assistant's replies and actions.
+- [Choosing the right combination](models/choosing-the-model.md): Practical guidelines for pairing voice model and AI model based on your use case.
+
+## Documents and knowledge base
+
+- [What the knowledge base is](documents/overview.md): How the knowledge base (RAG) works and why it's the most effective way to give the assistant your own information.
+- [Uploading and managing documents](documents/upload-documents.md): Supported formats, recommended sizes, and how to organise the archive.
+- [How search works during a call](documents/how-search-works.md): What happens behind the scenes when the assistant consults the knowledge base.
+- [Best practices](documents/best-practices.md): Common mistakes to avoid and habits that keep the base useful over time.
+
+## Calls
+
+- [Call history](calls/history.md): Browse the complete list of calls received and handled by your Yourang voice assistant.
+- [Transcripts and summaries](calls/transcripts-and-summaries.md): Read the full text of the conversation or check the AI-generated summary for each call.
+- [Audio recordings](calls/recordings.md): Listen to or download the audio recording of every call, in compliance with privacy regulations.
+- [Filters and search](calls/filters-and-search.md): Quickly find the call you're looking for using filters by date, outcome, number, and keyword.
+- [Data export](calls/export.md): Export your call history as a CSV file for analysis, reporting, and sharing with your team.
+
+## Call transfers
+
+- [When and why to transfer a call](call-transfers/overview.md): The three scenarios in which the assistant hands the call off to a person or another flow.
+- [Departments](call-transfers/departments.md): Configuring destination departments to route calls to the right team.
+- [System tools](call-transfers/system-tools.md): The built-in tools the assistant can trigger during a call.
+- [AI after-hours](call-transfers/after-hours.md): How the assistant handles calls when the business is closed.
+- [Routing rules](call-transfers/routing-rules.md): Mapping requests to the right destination in a predictable and transparent way.
+- [Operator app (iOS / Android)](call-transfers/operator-mobile-app.md): Receive AI-transferred calls directly on the operator’s mobile app.
+
+## WhatsApp
+
+- [WhatsApp Business in Yourang](whatsapp/overview.md): What you can do with WhatsApp and why it's a natural complement to the voice assistant.
+- [Real-time chat](whatsapp/chat.md): How the team manages WhatsApp conversations from the panel.
+- [Automations](whatsapp/automations.md): Automatic replies, routing, and after-hours management via WhatsApp.
+- [Approved templates](whatsapp/templates.md): How to create and use templates needed to write outside the 24-hour window.
+- [WhatsApp contacts and lists](whatsapp/contacts-and-lists.md): Dedicated address book, segmentation, opt-in, and GDPR-compliant management.
+- [WhatsApp AI agents](whatsapp/ai-agents.md): Create AI agents that handle WhatsApp conversations automatically.
+
+## Meta Agent
+
+- [The Meta agent in Yourang](meta-agent/overview.md): What the Meta agent does and why it brings AI assistance where your customers already write: Instagram and Facebook.
+- [Prepare your Meta accounts](meta-agent/prepare-accounts.md): Everything you need to sort out on Facebook and Instagram before connecting the agent, explained one click at a time.
+- [Connect Instagram and Facebook to Yourang](meta-agent/connect.md): The actual connection: press «Connect», authorize access, and select your Page and Instagram account, one click at a time.
+- [Create the Meta agent](meta-agent/create-agent.md): Create the agent that will reply to messages and comments, choosing the right type and initial settings.
+- [Configure the agent](meta-agent/configure.md): Activation, DM reply mode, instructions, comment moderation, tools, and transcripts: every setting explained.
+- [Comments and moderation](meta-agent/comments.md): How the agent replies to public comments, hides abusive ones, and directs customers to private messages.
+- [Inbox and take over](meta-agent/inbox.md): Monitor Instagram and Facebook conversations and take over a chat when a person is needed.
+
+## Actions and campaigns
+
+- [What actions are](actions/overview.md): Difference between one-off actions and campaigns, and when to use each channel.
+- [SMS campaigns](actions/sms.md): When SMS works, how to write one well, costs, and delivery rates.
+- [Email campaigns](actions/email.md): Transactional emails, newsletters, sequences: best practices and configuration.
+- [Scheduling and batch sends](actions/scheduling-and-batch.md): Schedule future sends, manage large lists, and monitor results.
+
+## Reservations
+
+- [Calendar view](bookings/calendar-view.md): View and manage all reservations in a single intuitive interface
+- [Availability rules](bookings/availability-rules.md): Configure opening hours, time slots, and capacity for your business
+- [Confirmations and reminders](bookings/confirmations-and-reminders.md): Configure automatic confirmation and pre-arrival reminder communications
+- [Changes and cancellations](bookings/changes-and-cancellations.md): Understand how the assistant handles change and cancellation requests
+
+## Contacts
+
+- [Customer directory](contacts/address-book.md): Your centralised archive of customers and guests
+- [CSV import](contacts/csv-import.md): Bring your existing customer list into Yourang in a few steps
+- [Lists and segments](contacts/lists-and-segments.md): Organise contacts into groups to manage them more effectively
+- [Custom fields](contacts/custom-fields.md): Add information specific to your business to every contact
+
+## Shop and catalogue
+
+- [The shop in Yourang](shop/overview.md): What it's for, when it makes sense to use it, and how it ties into the voice assistant.
+- [Product and service catalogue](shop/products-catalogue.md): Structuring the catalogue: categories, variants, prices, images.
+- [Order management](shop/orders.md): How orders arrive, how to track, fulfil, and invoice them.
+- [OCR and price-list import](shop/ocr-and-import.md): How to turn a PDF or an image of your price list into a digital catalogue.
+
+## Integrations
+
+- [Connect Apple Calendar](integrations/apple-calendar-setup.md): Step-by-step guide to connect Apple Calendar (iCloud) to Yourang via CalDAV
+- [Connect HubSpot](integrations/hubspot-setup.md): Step-by-step guide to connect HubSpot CRM to Yourang
+- [Integrations overview](integrations/overview.md): What an integration means and which systems are supported
+- [Calendar](integrations/calendar.md): Sync your calendar with Yourang
+- [WhatsApp](integrations/whatsapp.md): Communicate with customers via WhatsApp
+- [Meta (Instagram and Facebook)](integrations/meta.md): Connect Instagram and Facebook to reply to messages and comments
+- [SMS and email](integrations/sms-and-email.md): Notifications and reminders via SMS and email
+- [Business software and PMS](integrations/business-system.md): Sync data with your management system
+- [Outbound webhooks](integrations/webhooks.md): Technical notifications to your systems
+
+## Workflows
+
+- [What workflows are](workflows/overview.md): The visual way to orchestrate multiple actions and decisions in a single automation.
+- [Nodes and blocks](workflows/nodes-and-blocks.md): The building blocks of a workflow: triggers, actions, conditions, waits, end.
+- [Triggers and webhooks](workflows/triggers.md): How to start a workflow at the right moment.
+- [Practical examples](workflows/practical-examples.md): Three complete workflows you can adapt to your business.
+
+## Call center and dialer
+
+- [What the Yourang call center does](call-center/overview.md): Difference between AI dialer, human operators, and mixed flows.
+- [Outbound campaigns](call-center/outbound-campaigns.md): Configuring a campaign: list, script, hours, retry rules.
+- [Human operators](call-center/operators.md): Team management: presence, queues, conference with the AI.
+- [Contact lists and live sync](call-center/contact-lists-and-live-sync.md): How campaign contact lists work, what live sync does, and when to use snapshot mode instead.
+- [Operator panel](call-center/operator-panel.md): The dedicated interface for those handling call center calls.
+
+## External APIs and developers
+
+- [Yourang for developers](external-api/overview.md): What the external API offers, who it is for, general principles.
+- [API keys and authentication](external-api/api-keys.md): Generate, use, and revoke API keys safely.
+- [Main endpoints](external-api/endpoints.md): Overview of API areas and the most common use cases.
+- [Incoming webhooks](external-api/webhooks.md): Receive notifications from Yourang when events occur.
+
+## Use cases
+
+- [Hotels and accommodation](use-cases/hotel.md): How Yourang supports a hotel reception by autonomously answering the most frequent calls
+- [Restaurant](use-cases/restaurant.md): Table bookings, menu information, and handling special requests without tying up the floor staff
+- [B&Bs and short-term rentals](use-cases/bnb.md): An always-on virtual reception for those managing properties without permanent staff
+- [Beauty center and spa](use-cases/beauty-salon.md): Treatment bookings, information on prices and duration, waiting list management
+- [Travel agency](use-cases/travel-agency.md): First-line request filtering, gathering customer needs, and handover to the consultant for personalized offers
+
+## Pricing and plans
+
+- [How pricing works](pricing/overview.md): The two components of Yourang cost: monthly subscription and credit-based consumption.
+- [Subscription plans](pricing/plans.md): Comparison of available plans: what each includes and who it's for.
+- [Wallet and credits](pricing/wallet-and-credits.md): How the prepaid wallet works, how to top it up, and how to enable automatic top-up.
+- [Consumption and invoices](pricing/usage-and-invoices.md): Monitor used minutes, view invoices, and keep monthly trends under control.
+- [Changing, suspending, or cancelling the plan](pricing/plan-change.md): How to move to a higher or lower plan, pause the subscription, or cancel the service.
+
+## Management
+
+- [Account and organization](management/account.md): Manage your business data
+- [Billing and subscription](management/billing.md): Manage your plan and invoices
+- [Team and roles](management/team.md): Invite your colleagues and manage permissions
+- [Security and privacy](management/security.md): Protect your account and your customers' data
+- [Notifications](management/notifications.md): Configure how you receive updates
+
+## Business information
+
+- [Business details](activity-info/details.md): Name, public contacts, description and social profiles shown to customers.
+- [Location and address](activity-info/place.md): Your physical business address and service coverage area.
+- [Opening hours](activity-info/time.md): Standard hours and special days (holidays, events).
+- [AI assistant hours — moved](activity-info/ai-working-hours.md): This setting has moved to the Inbound Call Center.
+- [Departments and team](activity-info/departments.md): Organize departments to route transferred calls to your team.
+
+## Resources
+
+- [Frequently asked questions](resources/faq.md): Answers to the most common questions about Yourang and how the voice assistant works.
+- [Complete glossary](resources/glossary.md): All terms used in Yourang explained clearly, without jargon.
+- [Support](resources/support.md): How to contact the Yourang team, availability hours, and response times.
+
+## API reference
+
+- [OpenAPI 3 specification](external-api/openapi.yaml): External REST API v1
