@@ -1,0 +1,18 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "Yourang",
+  "description": "A guide designed for business owners who want to understand, step by step, how to hand off calls to a voice assistant. Yourang is an AI voice assistant platform for hotels, restaurants, and rentals — voice agents, workflows, calls, reservations, and a public REST API.",
+  "folders": [],
+  "excludeFolders": [
+    "node_modules",
+    ".git"
+  ],
+  "excludeFiles": [],
+  "rules": [
+    "External API base URL pattern is /api/external/v1/",
+    "External API uses Bearer API key authentication (Authorization: Bearer <key>), not JWT",
+    "Voice agents support Italian, English, French, Spanish, and German",
+    "All API operations are multi-tenant: scoped to the organization owning the API key",
+    "Outbound calls require the api key permission 'read_write_with_outbound_calls'"
+  ]
+}
