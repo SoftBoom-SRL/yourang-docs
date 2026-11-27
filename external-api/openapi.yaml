@@ -1,0 +1,540 @@
+openapi: 3.0.3
+info:
+  title: yourang External API
+  description: |
+    Official REST API for the yourang platform. This API allows you to integrate your applications with yourang to manage contacts and access core functionality.
+
+    ## Authentication
+
+    All API requests (except health check) require API key authentication via HTTP Bearer tokens.
+
+    ## Getting Started
+
+    1. Generate an API key from your yourang dashboard
+    2. Include the key in the Authorization header: `Authorization: Bearer your_api_key_here`
+    3. Start making requests to the endpoints below
+
+    ## Rate Limiting
+
+    - **Rate Limit:** 1000 requests per hour per API key
+    - **Burst Limit:** 50 requests per minute
+
+    ## Support
+
+    - **Email:** api-support@yourang.ai
+    - **Documentation:** https://docs.yourang.ai
+  version: 1.0.0
+  contact:
+    name: yourang API Support
+    email: api-support@yourang.ai
+    url: https://docs.yourang.ai
+  license:
+    name: Proprietary
+servers:
+  - url: https://api.yourang.ai
+    description: Production server
+  - url: http://api.localhost:8000
+    description: Development server
+
+security:
+  - BearerAuth: []
+
+paths:
+  /v1/health:
+    get:
+      tags:
+        - Health
+      summary: Health check
+      description: Check if the external API is operational. No authentication required.
+      security: []
+      responses:
+        "200":
+          description: API is healthy
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/BaseResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            example: healthy
+                          api_version:
+                            type: string
+                            example: v1
+                          service:
+                            type: string
+                            example: external_api
+
+  /v1/contacts:
+    get:
+      tags:
+        - Contacts
+      summary: List contacts
+      description: Retrieve a paginated list of contacts for your organization with optional sorting and search.
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of contacts to return (1-100)
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 10
+        - name: offset
+          in: query
+          description: Number of contacts to skip for pagination
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+        - name: sort
+          in: query
+          description: Sort field with optional '-' prefix for descending order
+          required: false
+          schema:
+            type: string
+            pattern: "^-?(first_name|last_name|email|created_at)$"
+            example: -created_at
+        - name: search
+          in: query
+          description: Search in first_name, last_name, or email
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+            example: john
+      responses:
+        "200":
+          description: Successfully retrieved contacts
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/BaseResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Contact"
+                      meta:
+                        $ref: "#/components/schemas/PaginationMeta"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+    post:
+      tags:
+        - Contacts
+      summary: Create contact
+      description: Create a new contact in your organization. Requires write permissions.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactCreate"
+            example:
+              first_name: "John"
+              last_name: "Doe"
+              email: "john.doe@example.com"
+              phone_number: "+1234567890"
+              address: "123 Main St, City, State"
+      responses:
+        "201":
+          description: Contact created successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/BaseResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/Contact"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+  /v1/contacts/{contact_id}:
+    get:
+      tags:
+        - Contacts
+      summary: Get contact
+      description: Retrieve a specific contact by ID. The contact must belong to your organization.
+      parameters:
+        - name: contact_id
+          in: path
+          required: true
+          description: UUID of the contact
+          schema:
+            type: string
+            format: uuid
+            example: 123e4567-e89b-12d3-a456-426614174000
+      responses:
+        "200":
+          description: Contact retrieved successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/BaseResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/Contact"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+    put:
+      tags:
+        - Contacts
+      summary: Update contact
+      description: Update a specific contact by ID. All fields are optional - only include fields you want to change. Requires write permissions.
+      parameters:
+        - name: contact_id
+          in: path
+          required: true
+          description: UUID of the contact
+          schema:
+            type: string
+            format: uuid
+            example: 123e4567-e89b-12d3-a456-426614174000
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactUpdate"
+            example:
+              first_name: "John"
+              last_name: "Smith"
+              email: "john.smith@example.com"
+              address: "456 New St, City, State"
+      responses:
+        "200":
+          description: Contact updated successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/BaseResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/Contact"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+    delete:
+      tags:
+        - Contacts
+      summary: Delete contact
+      description: Delete a specific contact by ID. Warning - This action cannot be undone. Requires write permissions.
+      parameters:
+        - name: contact_id
+          in: path
+          required: true
+          description: UUID of the contact
+          schema:
+            type: string
+            format: uuid
+            example: 123e4567-e89b-12d3-a456-426614174000
+      responses:
+        "200":
+          description: Contact deleted successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/BaseResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          message:
+                            type: string
+                            example: Contact deleted successfully
+                          deleted_id:
+                            type: string
+                            format: uuid
+                            example: 123e4567-e89b-12d3-a456-426614174000
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API_KEY
+      description: |
+        API key authentication. Include your API key in the Authorization header:
+        `Authorization: Bearer your_api_key_here`
+
+  schemas:
+    BaseResponse:
+      type: object
+      required:
+        - ok
+      properties:
+        ok:
+          type: boolean
+          description: Indicates if the request was successful
+          example: true
+        error:
+          type: string
+          description: Error message (only present when ok=false)
+          example: Invalid API key
+
+    PaginationMeta:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of items
+          example: 25
+        page:
+          type: integer
+          description: Current page number
+          example: 1
+        limit:
+          type: integer
+          description: Number of items per page
+          example: 10
+        has_next:
+          type: boolean
+          description: Whether there are more pages
+          example: true
+        has_prev:
+          type: boolean
+          description: Whether there are previous pages
+          example: false
+
+    Contact:
+      type: object
+      required:
+        - id
+        - first_name
+        - phone_number
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the contact
+          example: 123e4567-e89b-12d3-a456-426614174000
+        first_name:
+          type: string
+          description: Contact's first name
+          example: John
+        last_name:
+          type: string
+          nullable: true
+          description: Contact's last name
+          example: Doe
+        email:
+          type: string
+          format: email
+          nullable: true
+          description: Contact's email address
+          example: john.doe@example.com
+        phone_number:
+          type: string
+          description: Contact's phone number (must be unique within organization)
+          example: "+1234567890"
+        address:
+          type: string
+          nullable: true
+          description: Contact's physical address
+          example: 123 Main St, City, State
+        last_call_time:
+          type: string
+          format: date-time
+          nullable: true
+          description: Timestamp of the last call with this contact
+          example: "2024-01-15T10:30:00Z"
+
+    ContactCreate:
+      type: object
+      required:
+        - first_name
+        - phone_number
+      properties:
+        first_name:
+          type: string
+          description: Contact's first name
+          example: John
+        last_name:
+          type: string
+          description: Contact's last name
+          example: Doe
+        email:
+          type: string
+          format: email
+          description: Contact's email address
+          example: john.doe@example.com
+        phone_number:
+          type: string
+          description: Contact's phone number (must be unique within organization)
+          example: "+1234567890"
+        address:
+          type: string
+          description: Contact's physical address
+          example: 123 Main St, City, State
+
+    ContactUpdate:
+      type: object
+      description: All fields are optional - only include fields you want to update
+      properties:
+        first_name:
+          type: string
+          description: Contact's first name
+          example: John
+        last_name:
+          type: string
+          description: Contact's last name
+          example: Smith
+        email:
+          type: string
+          format: email
+          description: Contact's email address
+          example: john.smith@example.com
+        phone_number:
+          type: string
+          description: Contact's phone number (must be unique within organization)
+          example: "+1234567890"
+        address:
+          type: string
+          description: Contact's physical address
+          example: 456 New St, City, State
+
+    Error:
+      type: object
+      required:
+        - ok
+        - error
+      properties:
+        ok:
+          type: boolean
+          enum: [false]
+        error:
+          type: string
+          description: Error message describing what went wrong
+
+  responses:
+    BadRequest:
+      description: Bad request - Invalid request data or parameters
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          examples:
+            validation_error:
+              summary: Validation error
+              value:
+                ok: false
+                error: Invalid contact data
+            duplicate_phone:
+              summary: Duplicate phone number
+              value:
+                ok: false
+                error: A contact with this phone number already exists in your organization
+
+    Unauthorized:
+      description: Unauthorized - Invalid or missing API key
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            ok: false
+            error: Invalid API key
+      headers:
+        WWW-Authenticate:
+          schema:
+            type: string
+          example: Bearer
+
+    Forbidden:
+      description: Forbidden - Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          examples:
+            insufficient_permissions:
+              summary: Insufficient permissions
+              value:
+                ok: false
+                error: Insufficient permissions for this operation
+            read_only_key:
+              summary: Read-only API key used for write operation
+              value:
+                ok: false
+                error: Insufficient permissions - write access required
+
+    NotFound:
+      description: Not found - Requested resource doesn't exist
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            ok: false
+            error: Contact not found
+
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            ok: false
+            error: Internal server error
+
+tags:
+  - name: Health
+    description: Health check endpoints for monitoring API status
+  - name: Contacts
+    description: Manage your organization's contacts
+
+externalDocs:
+  description: Full API Documentation
+  url: https://docs.yourang.ai/external-api
